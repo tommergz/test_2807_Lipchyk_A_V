@@ -2,11 +2,12 @@ import { useState } from 'react';
 import "./App.css";
 import BlockCountainer from '../BlockConatiner/BlockCountainer';
 import Form from '../Form/Form';
-import {data} from '../../Constants/Data';
+import { data } from '../../Constants/Data';
 import { regularize } from '../../utils/utils';
 
+
 const App = () => {
-  const [idCounter, setIdCounter] = useState(2);
+  const [idCounter, setIdCounter] = useState(1);
   const [length, setLength] = useState(1);
   const [blocks, setBlocks] = useState(data);
 

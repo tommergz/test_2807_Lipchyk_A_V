@@ -1,12 +1,50 @@
+const checkSpace = (length, blocks) => {
+  let count = 0;
+  let index = 0;
+  let suit = [];
+  for (let i = 0; i < blocks.length; i++) {
+    if (blocks[i].empty) {
+      count += 1;
+      if (count === 1) index = i;
+      if (count >= length) {
+        suit.push(index);
+      } 
+    } else {
+      if (count === length) {
+        suit = [index];
+        break;
+      } else {
+        count = 0;
+      }
+    }
+  };
+  return suit.length > 0 ? suit[0] : false;
+};
+
+
 export const handleSubmit = (e, length, idCounter, setIdCounter, blocks, setBlocks) => {
   e.preventDefault();
   let submittedLength = +length;
-  const allBlocks = [...blocks].map((item) => {
+  let suited = false;
+  const suitIndex = checkSpace(submittedLength, blocks);
+  const allBlocks = [...blocks].map((item, index) => {
     if (item.empty && submittedLength > 0) {
-      item.id = idCounter;
-      item.empty = false;
-      submittedLength -= 1;
-      return item;
+      if (suitIndex) {
+        if (suitIndex === index) suited = true;
+        if (suited) {
+          item.id = idCounter;
+          item.empty = false;
+          submittedLength -= 1;
+          return item;
+        } else {
+          return item;
+        }
+      } else {
+        item.id = idCounter;
+        item.empty = false;
+        submittedLength -= 1;
+        return item;
+      }
     } else {
       return item;
     }
