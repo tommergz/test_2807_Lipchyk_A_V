@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import "./App.css";
 import BlockCountainer from '../BlockConatiner/BlockCountainer';
 import Form from '../Form/Form';
 import { data } from '../../Constants/Data';
@@ -12,7 +11,7 @@ const App = () => {
   const [blocks, setBlocks] = useState(data);
 
   return (
-    <div className="main">
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", marginTop: "40px" }}>
       <Form 
         length={length}
         setLength={setLength}
@@ -25,7 +24,7 @@ const App = () => {
         blocks={blocks}
         setBlocks={setBlocks}
       />
-      <button onClick={() => regularize(blocks, setBlocks)}>Упорядочить</button>
+      <button onClick={() => regularize(blocks, setBlocks)}>Собрать блоки</button>
     </div>
   );
 }

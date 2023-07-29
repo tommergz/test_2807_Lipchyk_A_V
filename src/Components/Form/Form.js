@@ -1,5 +1,10 @@
+import { styled } from "styled-components";
 import { handleSubmit } from "../../utils/utils";
-import "./Form.css";
+
+const FormInput = styled.input`
+  width: fit-content;
+  margin-left: 5px;
+`
 
 const Form = ({
   length,
@@ -18,8 +23,7 @@ const Form = ({
     <form onSubmit={(e) => handleSubmit(e, length, idCounter, setIdCounter, blocks, setBlocks)}>
       <label>
         Длина блока:
-        <input
-          className="form-input" 
+        <FormInput
           type="number" 
           value={length} 
           onChange={handleChange} 
