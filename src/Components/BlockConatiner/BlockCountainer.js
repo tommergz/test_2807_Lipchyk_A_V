@@ -10,10 +10,10 @@ const BlockCountainer = ({blocks, setBlocks}) => {
             key={+Date.now().toString() + index}
             id={id} 
             className="block" 
-            style={{ backgroundColor: empty ? "white" : light ? "green" : "black"}}
+            style={{ backgroundColor: empty ? "white" : light ? "green" : "rgb(68, 68, 68)"}}
             onClick={(e) => handleClick(e, blocks, setBlocks)}
           >
-            {empty ? '' : id}
+            {empty ? 'X' : id}
           </div>
         })
       }
