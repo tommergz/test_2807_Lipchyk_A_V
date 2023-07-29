@@ -1,6 +1,7 @@
+import { handleClick } from "../../utils/utils";
 import "./BlockCountainer.css";
 
-const BlockCountainer = ({blocks, handleClick, handleDelete}) => {
+const BlockCountainer = ({blocks, setBlocks}) => {
   return (
     <div className="block-container">
       {
@@ -10,7 +11,7 @@ const BlockCountainer = ({blocks, handleClick, handleDelete}) => {
             id={id} 
             className="block" 
             style={{ backgroundColor: empty ? "white" : light ? "green" : "black"}}
-            onClick={handleClick}
+            onClick={(e) => handleClick(e, blocks, setBlocks)}
           >
             {empty ? '' : id}
           </div>
