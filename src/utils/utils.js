@@ -94,6 +94,14 @@ export const handleClick = (e, blocks, setBlocks) => {
 }; 
 
 export const regularize = (blocks, setBlocks) => {
-  let allBlocks = [...blocks].sort((a, b) => a.empty - b.empty);;
-  setBlocks(allBlocks);
+  let allBlocks = [...blocks];
+  let regularizedBlocks = [];
+  while (allBlocks.length > 0) {
+    let id = allBlocks[0].id;
+    let newArray = [...blocks].filter(item => item.id === id);
+    allBlocks = allBlocks.filter(item => item.id !== id);
+    regularizedBlocks = regularizedBlocks.concat(newArray);
+  };
+  regularizedBlocks.sort((a, b) => a.empty - b.empty);;
+  setBlocks(regularizedBlocks);
 };
